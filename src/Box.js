@@ -1,10 +1,21 @@
 import { Component } from "react";
 
 class Box extends Component {
+  static defaultProps = {
+    backgroundColor: "red",
+    width: "150px",
+    height: "100px",
+  };
   render() {
+    const { backgroundColor, width, height } = this.props;
+
     return (
       <div
-        style={{ backgroundColor: "#462341", width: "400px", height: "300px" }}
+        style={{
+          backgroundColor: backgroundColor,
+          width: width,
+          height: height,
+        }}
       ></div>
     );
   }
