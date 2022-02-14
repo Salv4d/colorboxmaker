@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Box from "./Box";
+import NewBoxForm from "./NewBoxForm";
 
 class BoxList extends Component {
   constructor(props) {
@@ -10,9 +11,9 @@ class BoxList extends Component {
   }
 
   render() {
-    console.log(this.state.boxList);
     return (
       <div>
+        <NewBoxForm />
         {this.state.boxList.map((val, idx) => (
           <Box
             key={idx}
