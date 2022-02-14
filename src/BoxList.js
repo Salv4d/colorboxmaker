@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Box from "./Box";
 import NewBoxForm from "./NewBoxForm";
+import { v4 as uuidv4 } from "uuid";
 
 class BoxList extends Component {
   constructor(props) {
@@ -9,24 +10,33 @@ class BoxList extends Component {
       boxList: new Array(),
     };
     this.addBox = this.addBox.bind(this);
+    this.removeBox = this.removeBox.bind(this);
   }
 
   addBox(newObj) {
-    console.log(newObj);
+    newObj["key"] = uuidv4();
+
     this.setState((st) => ({ boxList: [...st.boxList, newObj] }));
   }
 
+  removeBox(boxId) {
+    this.setState((st) => ({
+      boxList: st.boxList.filter((val) => val.key != boxId),
+    }));
+  }
+
   render() {
-    console.log(this.state);
     return (
       <div>
         <NewBoxForm addBox={this.addBox} />
-        {this.state.boxList.map((val, idx) => (
+        {this.state.boxList.map((val) => (
           <Box
-            key={idx}
+            key={val.key}
+            boxId={val.key}
             backgroundColor={val.color}
             width={val.width}
             height={val.height}
+            removeBox={this.removeBox}
           />
         ))}
       </div>
