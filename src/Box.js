@@ -25,8 +25,8 @@ class Box extends Component {
         <div
           style={{
             backgroundColor: backgroundColor,
-            width: width,
-            height: height,
+            width: `${width}px`,
+            height: `${height}px`,
           }}
         ></div>
         <button onClick={this.handleClick}>Remove Box</button>

@@ -23,13 +23,7 @@ class NewBoxForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    const { color, width, height } = evt.target;
-
-    this.props.addBox({
-      color: color.value,
-      width: `${width.value}px`,
-      height: `${height.value}px`,
-    });
+    this.props.addBox(this.state);
   }
 
   render() {
